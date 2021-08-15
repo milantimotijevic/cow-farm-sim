@@ -7,7 +7,7 @@ class CustomListItem {
 
 class CustomLinkedList {
     constructor() {
-        this.head = null;
+        this.first = null;
         this.size = 0;
     }
 
@@ -16,10 +16,10 @@ class CustomLinkedList {
 
         let current;
 
-        if (this.head === null)
-            this.head = item;
-        else {
-            current = this.head;
+        if (this.first === null) {
+            this.first = item;
+        } else {
+            current = this.first;
             while (current.next) {
                 current = current.next;
             }
@@ -30,9 +30,9 @@ class CustomLinkedList {
 
     indexOf(item) {
         let counter = 0;
-        let current = this.head;
+        let current = this.first;
 
-        while (current != null) {
+        while (current !== null) {
 
             if (current.item === item) {
                 return counter;
@@ -46,13 +46,13 @@ class CustomLinkedList {
     }
 
     remove(item) {
-        var current = this.head;
+        var current = this.first;
         var previous = null;
 
-        while (current != null) {
+        while (current !== null) {
             if (current.item === item) {
-                if (previous == null) {
-                    this.head = current.next;
+                if (previous === null) {
+                    this.first = current.next;
                 } else {
                     previous.next = current.next;
                 }
@@ -66,7 +66,7 @@ class CustomLinkedList {
     }
 
     forEach(operation) {
-        let current = this.head;
+        let current = this.first;
         let counter = 0;
 
         while (counter < this.size) {
