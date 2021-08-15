@@ -7,18 +7,15 @@ class CustomListItem {
 
 class CustomLinkedList {
     constructor() {
-        this.first = null;
         this.head = null;
         this.size = 0;
     }
-  
+
     push(value) {
         const item = new CustomListItem(value);
-        if (!this.first) {
-            this.first = item;
-        }
+
         let current;
-  
+
         if (this.head === null)
             this.head = item;
         else {
@@ -31,27 +28,53 @@ class CustomLinkedList {
         this.size++;
     }
 
-    performOperation(value, operation) {
-        operation(value);
+    indexOf(item) {
+        let counter = 0;
+        let current = this.head;
+
+        while (current != null) {
+
+            if (current.item === item) {
+                return counter;
+            }
+
+            counter++;
+            current = current.next;
+        }
+
+        return -1;
+    }
+
+    remove(item) {
+        var current = this.head;
+        var previous = null;
+
+        while (current != null) {
+            if (current.item === item) {
+                if (previous == null) {
+                    this.head = current.next;
+                } else {
+                    previous.next = current.next;
+                }
+                this.size--;
+                return current.item;
+            }
+            previous = current;
+            current = current.next;
+        }
+        return -1;
     }
 
     forEach(operation) {
-        let current = this.first;
+        let current = this.head;
         let counter = 0;
-        
+
         while (counter < this.size) {
-            console.log(current.value.id)
+            operation(current.value)
             current = current.next
             counter++;
         }
     }
-      
-    printAll() {
-        this.forEach(console.log);
-    }
-
-    
 }
 
 module.exports = CustomLinkedList;
-  

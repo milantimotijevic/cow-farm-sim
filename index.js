@@ -7,6 +7,16 @@ farm.giveBirth(0, 'Danny');
 farm.giveBirth(0, 'Manny');
 farm.giveBirth(0, 'Tanny');
 
-farm.primaryCow.children.forEach(console.log)
+farm.giveBirth(4, 'Ranny');
+farm.giveBirth(5, 'Zanny');
+farm.giveBirth(6, 'Blanny');
+
+farm.giveBirth(0, 'Ganny');
+
+farm.printAll();
+
+farm.endLifeSpan(5)
+
+farm.printAll();
 
 

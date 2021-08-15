@@ -27,8 +27,11 @@ module.exports = class Farm {
             if (cow.id === idToEndLifeSpan) {
                 console.log(`\n${cow.toString()}, daughter of ${parentCow.toString()} has died :(`);
                 const childIndex = parentCow.children.indexOf(cow);
-                parentCow.children.splice(childIndex, 1);
-                parentCow.children = parentCow.children.concat(cow.children);
+                parentCow.children.remove(childIndex);
+
+                cow.children.forEach(cowChild => {
+                    parentCow.children.push(cowChild)
+                })
                 return true;
             }
         };
