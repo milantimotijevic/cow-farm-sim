@@ -36,9 +36,18 @@ module.exports = class Farm {
         this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
-    printAll() {
+    printAllPretty() {
         console.log('Currently alive cows:');
         console.log(JSON.stringify(this.primaryCow, undefined, '\t'))
+    }
+
+    printAll() {
+        console.log('Currently alive cows:');
+        const handler = (cow) => {
+            process.stdout.write(`${cow.toString()} > `);
+        };
+
+        this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
     findAndApplyOperation(cursorCow, operation, parentCow) {
