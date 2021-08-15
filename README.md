@@ -1,0 +1,2 @@
+This branch contains the solution to Task1. There is a separate branch called 'task2' for the other task.
+Neither task is 100% complete. Neither has any sort of error handling when trying to 'giveBirth' by a non-existent parent.
