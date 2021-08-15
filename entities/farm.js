@@ -1,13 +1,10 @@
-const Cow = require('./cow');
-
 module.exports = class Farm {
     constructor(primaryCow) {
         this.primaryCow = primaryCow;
     }
 
-    giveBirth(parentCowId, childNickname, childCowId) {
-        const newCow = new Cow(childNickname, childCowId);
-        
+    giveBirth(parentCowId, newCow) {
+
         const handler = (currentCow) => {
             if (currentCow.id === parentCowId) {
                 currentCow.children.push(newCow);
@@ -20,7 +17,7 @@ module.exports = class Farm {
 
     endLifeSpan(idToEndLifeSpan) {
         if (idToEndLifeSpan === this.primaryCow.id) {
-            console.log(`${this.primaryCow.toString()} is immortal!`);
+            console.log(`\n${this.primaryCow.toString()} is immortal!`);
             return;
         }
 
@@ -46,13 +43,13 @@ module.exports = class Farm {
         this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
-    findAndApplyOperation(cursorCow, operation) {
-        const shouldStop = operation(cursorCow);
+    findAndApplyOperation(cursorCow, operation, parentCow) {
+        const shouldStop = operation(cursorCow, parentCow);
         
         if (shouldStop) {
             return;
         }
 
-        cursorCow.children.forEach(cow => this.findAndApplyOperation(cow, operation));
+        cursorCow.children.forEach(cow => this.findAndApplyOperation(cow, operation, cursorCow));
     }
 };

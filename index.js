@@ -1,21 +1,19 @@
 const { Cow, Farm } = require('./entities');
-const { getNextId } = require('./utils');
 
-const primaryCow = new Cow('Bessie');
-const farm = new Farm(primaryCow);
-primaryCow.children = [
-    new Cow('Messie'),
-    new Cow('Dessie'),
-    new Cow('Fessie'),
-];
+const farm = new Farm(new Cow('Bessie'));
 
-primaryCow.children[2].children[0] = new Cow('Jessie')
-primaryCow.children[2].children[1] = new Cow('Tressie')
-primaryCow.children[2].children[2] = new Cow('Lassy')
+farm.printAll();
+
+farm.giveBirth(0, new Cow('Jessie'));
+
+farm.printAll();
+
+farm.giveBirth(1, new Cow('Messie'));
+
+farm.printAll();
+
+farm.endLifeSpan(2)
 
 
-farm.printAll()
-farm.giveBirth(0, 'Shaneeka')
-farm.printAll()
-farm.giveBirth(100, 'Jordana')
-farm.printAll()
+
+
