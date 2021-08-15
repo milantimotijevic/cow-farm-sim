@@ -10,4 +10,26 @@ module.exports = class Farm {
     endLifeSpan(cowId) {
         
     }
+
+    executeOperation(cursorCow, operation, parentCow) {
+        const shouldStop = operation(cursorCow, parentCow);
+        
+        if (shouldStop) {
+            return;
+        }
+
+        cursorCow.children.forEach(cow => this.executeOperation(cow, operation, cursorCow))
+    }
+
+    remove() {
+
+    }
+
+    printAll() {
+        this.executeOperation(this.primaryCow, this.printToConsole, null);
+    }
+
+    printToConsole(cow) {
+        console.log(`\n ${cow.nickname}(${cow.id})`);
+    }
 };
