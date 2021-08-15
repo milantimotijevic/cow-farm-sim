@@ -13,12 +13,22 @@ module.exports = class Farm {
             return;
         }
 
-        const handler = (cow) => {
+        const handler = (cow, parentCow) => {
             if (cow.id === idToEndLifeSpan) {
-                // do something
-                console.log(`killing ${cow.toString()}`);
+                console.log(`${cow.toString()}, daughter of ${parentCow.toString()} has died :(`);
+                const childIndex = parentCow.children.indexOf(cow);
+                parentCow.children.splice(childIndex, 1);
+                parentCow.children = parentCow.children.concat(cow.children);
                 return true;
             }
+        };
+
+        this.executeOperation(this.primaryCow, handler, null);
+    }
+
+    printAll() {
+        const handler = (cow) => {
+            console.log(`${cow.toString()}`);
         };
 
         this.executeOperation(this.primaryCow, handler, null);
@@ -32,13 +42,5 @@ module.exports = class Farm {
         }
 
         cursorCow.children.forEach(cow => this.executeOperation(cow, operation, cursorCow))
-    }
-
-    printAll() {
-        this.executeOperation(this.primaryCow, this.printToConsole, null);
-    }
-
-    printToConsole(cow) {
-        console.log(`${cow.toString()}`);
     }
 };
