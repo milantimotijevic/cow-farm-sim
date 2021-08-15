@@ -1,4 +1,4 @@
-const Cow = require("./cow");
+const Cow = require('./cow');
 
 module.exports = class Farm {
     constructor(primaryCow) {
@@ -53,6 +53,6 @@ module.exports = class Farm {
             return;
         }
 
-        cursorCow.children.forEach(cow => this.findAndApplyOperation(cow, operation))
+        cursorCow.children.forEach(cow => this.findAndApplyOperation(cow, operation));
     }
 };
