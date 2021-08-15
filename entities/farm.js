@@ -7,8 +7,21 @@ module.exports = class Farm {
 
     }
 
-    endLifeSpan(cowId) {
-        
+    endLifeSpan(idToEndLifeSpan) {
+        if (idToEndLifeSpan === this.primaryCow.id) {
+            console.log(`${this.primaryCow.toString()} is immortal!`);
+            return;
+        }
+
+        const handler = (cow) => {
+            if (cow.id === idToEndLifeSpan) {
+                // do something
+                console.log(`killing ${cow.toString()}`);
+                return true;
+            }
+        };
+
+        this.executeOperation(this.primaryCow, handler, null);
     }
 
     executeOperation(cursorCow, operation, parentCow) {
@@ -19,10 +32,6 @@ module.exports = class Farm {
         }
 
         cursorCow.children.forEach(cow => this.executeOperation(cow, operation, cursorCow))
-    }
-
-    remove() {
-
     }
 
     printAll() {
