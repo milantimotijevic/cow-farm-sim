@@ -43,6 +43,10 @@ module.exports = class Farm {
         this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
+    toPrettyJSON() {
+        console.log(JSON.stringify(this.primaryCow, undefined, ' '));
+    }
+
     findAndApplyOperation(cursorCow, operation, parentCow) {
         const shouldStop = operation(cursorCow, parentCow);
         

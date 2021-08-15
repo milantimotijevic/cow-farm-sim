@@ -14,6 +14,6 @@ farm.printAll();
 
 farm.endLifeSpan(2)
 
-
+farm.toPrettyJSON()
 
 
