@@ -1,9 +1,9 @@
 const { getNextId } = require('../utils');
 
 module.exports = class Cow {
-    constructor(nickname, id = getNextId()) {
+    constructor(nickname) {
         this.nickname = nickname;
-        this.id = id;
+        this.id = getNextId();
         this.children = [];
     }
 

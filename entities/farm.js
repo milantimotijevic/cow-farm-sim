@@ -5,7 +5,7 @@ module.exports = class Farm {
         this.primaryCow = new Cow('Bessie');
     }
 
-    giveBirth(parentCowId, newCowNickname, newCowId) {
+    giveBirth(parentCowId, newCowNickname) {
         const newCow = new Cow(newCowNickname);
         const handler = (currentCow) => {
             if (currentCow.id === parentCowId) {
