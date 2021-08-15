@@ -28,12 +28,27 @@ class CustomLinkedList {
         this.size++;
     }
 
+    findById(id) {
+        let counter = 0;
+        let current = this.first;
+
+        while (current !== null) {
+            if (current.value.id === id) {
+                return current;
+            }
+
+            counter++;
+            current = current.next;
+        }
+        
+        return -1;
+    }
+
     indexOf(value) {
         let counter = 0;
         let current = this.first;
 
         while (current !== null) {
-
             if (current.value === value) {
                 return counter;
             }
@@ -45,19 +60,19 @@ class CustomLinkedList {
         return -1;
     }
 
-    remove(item) {
+    remove(value) {
         var current = this.first;
         var previous = null;
 
         while (current !== null) {
-            if (current.item === item) {
+            if (current.value.id === value) {
                 if (previous === null) {
                     this.first = current.next;
                 } else {
                     previous.next = current.next;
                 }
                 this.size--;
-                return current.item;
+                return current.value;
             }
             previous = current;
             current = current.next;

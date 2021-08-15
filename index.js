@@ -13,10 +13,10 @@ farm.giveBirth(6, 'Blanny');
 
 farm.giveBirth(0, 'Ganny');
 
-farm.printAll();
+farm.endLifeSpan(3)
+farm.printAll()
 
-farm.endLifeSpan(2)
 
-farm.printAll();
+
 
 

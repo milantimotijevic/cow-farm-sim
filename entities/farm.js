@@ -27,6 +27,7 @@ module.exports = class Farm {
             if (cow.id === idToEndLifeSpan) {
                 console.log(`\n${cow.toString()}, daughter of ${parentCow.toString()} has died :(`);
                 const childIndex = parentCow.children.indexOf(cow);
+
                 parentCow.children.remove(childIndex);
 
                 cow.children.forEach(cowChild => {
