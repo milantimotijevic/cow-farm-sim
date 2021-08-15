@@ -4,5 +4,9 @@ const farm = new Farm();
 
 farm.giveBirth(0, 'Nanny');
 farm.giveBirth(0, 'Danny');
+farm.giveBirth(0, 'Manny');
+farm.giveBirth(0, 'Tanny');
 
-farm.printAll()
+farm.primaryCow.children.forEach(console.log)
+
+
