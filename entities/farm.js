@@ -1,10 +1,12 @@
+const Cow = require('./cow');
+
 module.exports = class Farm {
-    constructor(primaryCow) {
-        this.primaryCow = primaryCow;
+    constructor() {
+        this.primaryCow = new Cow('Bessie');
     }
 
-    giveBirth(parentCowId, newCow) {
-
+    giveBirth(parentCowId, newCowNickname, newCowId) {
+        const newCow = new Cow(newCowNickname);
         const handler = (currentCow) => {
             if (currentCow.id === parentCowId) {
                 currentCow.children.push(newCow);
@@ -36,11 +38,7 @@ module.exports = class Farm {
 
     printAll() {
         console.log('Currently alive cows:');
-        const handler = (cow) => {
-            process.stdout.write(`${cow.toString()} > `);
-        };
-
-        this.findAndApplyOperation(this.primaryCow, handler, null);
+        console.log(JSON.stringify(this.primaryCow, undefined, '\t'))
     }
 
     toPrettyJSON() {
