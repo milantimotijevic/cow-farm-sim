@@ -30,6 +30,6 @@ module.exports = class Farm {
     }
 
     printToConsole(cow) {
-        console.log(`\n ${cow.nickname}(${cow.id})`);
+        console.log(`${cow.toString()}`);
     }
 };

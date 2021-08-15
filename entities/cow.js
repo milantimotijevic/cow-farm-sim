@@ -6,4 +6,8 @@ module.exports = class Cow {
         this.id = id;
         this.children = [];
     }
+
+    toString() {
+        return `${this.nickname}(${this.id})`;
+    }
 }
