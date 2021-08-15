@@ -46,13 +46,13 @@ module.exports = class Farm {
         this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
-    findAndApplyOperation(cursorCow, operation, parentCow) {
-        const shouldStop = operation(cursorCow, parentCow);
+    findAndApplyOperation(cursorCow, operation) {
+        const shouldStop = operation(cursorCow);
         
         if (shouldStop) {
             return;
         }
 
-        cursorCow.children.forEach(cow => this.findAndApplyOperation(cow, operation, cursorCow))
+        cursorCow.children.forEach(cow => this.findAndApplyOperation(cow, operation))
     }
 };
