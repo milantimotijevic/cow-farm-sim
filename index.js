@@ -15,7 +15,7 @@ farm.giveBirth(0, 'Ganny');
 
 farm.printAll();
 
-farm.endLifeSpan(5)
+farm.endLifeSpan(2)
 
 farm.printAll();
 

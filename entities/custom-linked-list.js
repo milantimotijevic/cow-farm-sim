@@ -28,20 +28,20 @@ class CustomLinkedList {
         this.size++;
     }
 
-    indexOf(item) {
+    indexOf(value) {
         let counter = 0;
         let current = this.first;
 
         while (current !== null) {
 
-            if (current.item === item) {
+            if (current.value === value) {
                 return counter;
             }
 
             counter++;
             current = current.next;
         }
-
+        
         return -1;
     }
 
