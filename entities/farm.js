@@ -23,6 +23,7 @@ module.exports = class Farm {
             return;
         }
 
+        // TODO fix issue with wrong parentCow being passed
         const handler = (cow, parentCow) => {
             if (cow.id === idToEndLifeSpan) {
                 console.log(`\n${cow.toString()}, daughter of ${parentCow.toString()} has died :(`);

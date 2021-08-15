@@ -1,0 +1,1 @@
+This branch contains the solution for Task 2, which was unfortunately NOT completed fully. Cow removal does not work.
