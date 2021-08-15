@@ -30,15 +30,21 @@ class CustomLinkedList {
         }
         this.size++;
     }
-      
-    printAll() {
-        let current = this.head;
-        let str = "";
-        while (current) {
-            str += current.value + " ";
+
+    performOperation(current, operation) {
+        operation(current);
+    }
+
+    forEach(operation) {
+        let current = this.first.value;
+        while (current.next) {
+            this.performOperation(current, operation);
             current = current.next;
         }
-        console.log(str);
+    }
+      
+    printAll() {
+        this.forEach(console.log);
     }
 
     
