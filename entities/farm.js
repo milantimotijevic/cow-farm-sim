@@ -15,7 +15,7 @@ module.exports = class Farm {
 
         const handler = (cow, parentCow) => {
             if (cow.id === idToEndLifeSpan) {
-                console.log(`${cow.toString()}, daughter of ${parentCow.toString()} has died :(`);
+                console.log(`\n${cow.toString()}, daughter of ${parentCow.toString()} has died :(`);
                 const childIndex = parentCow.children.indexOf(cow);
                 parentCow.children.splice(childIndex, 1);
                 parentCow.children = parentCow.children.concat(cow.children);
@@ -23,24 +23,25 @@ module.exports = class Farm {
             }
         };
 
-        this.executeOperation(this.primaryCow, handler, null);
+        this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
     printAll() {
+        console.log('Currently alive cows:');
         const handler = (cow) => {
-            console.log(`${cow.toString()}`);
+            process.stdout.write(`${cow.toString()} > `);
         };
 
-        this.executeOperation(this.primaryCow, handler, null);
+        this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
-    executeOperation(cursorCow, operation, parentCow) {
+    findAndApplyOperation(cursorCow, operation, parentCow) {
         const shouldStop = operation(cursorCow, parentCow);
         
         if (shouldStop) {
             return;
         }
 
-        cursorCow.children.forEach(cow => this.executeOperation(cow, operation, cursorCow))
+        cursorCow.children.forEach(cow => this.findAndApplyOperation(cow, operation, cursorCow))
     }
 };
