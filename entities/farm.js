@@ -1,10 +1,21 @@
+const Cow = require("./cow");
+
 module.exports = class Farm {
     constructor(primaryCow) {
         this.primaryCow = primaryCow;
     }
 
-    giveBirth(parentCowId, childCowId, childNickname) {
+    giveBirth(parentCowId, childNickname, childCowId) {
+        const newCow = new Cow(childNickname, childCowId);
+        
+        const handler = (currentCow) => {
+            if (currentCow.id === parentCowId) {
+                currentCow.children.push(newCow);
+                return true;
+            }
+        };
 
+        this.findAndApplyOperation(this.primaryCow, handler, null);
     }
 
     endLifeSpan(idToEndLifeSpan) {
