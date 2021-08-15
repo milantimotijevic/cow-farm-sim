@@ -1,10 +1,11 @@
 const { getNextId } = require('../utils');
+const CustomLinkedList = require('./custom-linked-list');
 
 module.exports = class Cow {
     constructor(nickname) {
         this.nickname = nickname;
         this.id = getNextId();
-        this.children = [];
+        this.children = new CustomLinkedList();
     }
 
     toString() {
